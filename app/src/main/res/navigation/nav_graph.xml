@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.android.elegantmedia.feature.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_hotelListFragment"
+            app:destination="@id/hotelListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelDetailFragment"
+        android:name="com.android.elegantmedia.feature.hoteldetail.HotelDetailFragment"
+        android:label="hotel_detail_fragment"
+        tools:layout="@layout/hotel_detail_fragment" >
+        <argument
+            android:name="selectedHotel"
+            app:argType="com.android.elegantmedia.feature.hotelList.models.Hotel" />
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelListFragment"
+        android:name="com.android.elegantmedia.feature.hotelList.ui.HotelListFragment"
+        android:label="List View"
+        tools:layout="@layout/hotel_list_fragment" >
+        <action
+            android:id="@+id/action_hotelListFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_hotelListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.android.elegantmedia.feature.location.LocationFragment"
+        android:label="location_fragment"
+        tools:layout="@layout/location_fragment" >
+        <argument
+            android:name="latitude"
+            app:argType="float" />
+        <argument
+            android:name="longitude"
+            app:argType="float" />
+    </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.android.elegantmedia.feature.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" >
+        <argument
+            android:name="latitude"
+            app:argType="float" />
+        <argument
+            android:name="longitude"
+            app:argType="float" />
+    </activity>
+</navigation>

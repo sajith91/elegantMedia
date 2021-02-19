@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.android.elegantmedia.feature.login.LoginViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.login.LoginFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_page_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/title_style"
+        >
+    </TextView>
+
+    <Button
+        android:id="@+id/facebook_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounded_corner"
+        android:drawableStart="@drawable/facebook_icon"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="Log in with Facebook"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+<!--    android:onClick="@{() -> viewModel.onCLickFacebookIcon}"-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
