@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.android.elegantmedia.feature.login.LoginFragment"
-        android:label="login_fragment"
+        android:label="Elegant Media"
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_hotelListFragment"
@@ -16,14 +16,11 @@
     <fragment
         android:id="@+id/hotelDetailFragment"
         android:name="com.android.elegantmedia.feature.hoteldetail.HotelDetailFragment"
-        android:label="hotel_detail_fragment"
+        android:label="Details"
         tools:layout="@layout/hotel_detail_fragment" >
         <argument
             android:name="selectedHotel"
             app:argType="com.android.elegantmedia.feature.hotelList.models.Hotel" />
-        <action
-            android:id="@+id/action_hotelDetailFragment_to_locationFragment"
-            app:destination="@id/locationFragment" />
         <action
             android:id="@+id/action_hotelDetailFragment_to_mapsActivity"
             app:destination="@id/mapsActivity" />
@@ -46,28 +43,13 @@
             android:id="@+id/action_hotelListFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/locationFragment"
-        android:name="com.android.elegantmedia.feature.location.LocationFragment"
-        android:label="location_fragment"
-        tools:layout="@layout/location_fragment" >
-        <argument
-            android:name="latitude"
-            app:argType="float" />
-        <argument
-            android:name="longitude"
-            app:argType="float" />
-    </fragment>
     <activity
         android:id="@+id/mapsActivity"
-        android:name="com.android.elegantmedia.feature.MapsActivity"
-        android:label="activity_maps"
+        android:name="com.android.elegantmedia.feature.place.MapsActivity"
+        android:label="Map"
         tools:layout="@layout/activity_maps" >
         <argument
-            android:name="latitude"
-            app:argType="float" />
-        <argument
-            android:name="longitude"
-            app:argType="float" />
+            android:name="hotel"
+            app:argType="com.android.elegantmedia.feature.hotelList.models.Hotel" />
     </activity>
 </navigation>

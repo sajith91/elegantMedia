@@ -103,56 +103,6 @@ class LoginFragment : Fragment() {
                     FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS)
                 }
 
-
-//                // Facebook Id
-//                if (jsonObject.has("id")) {
-//                    val facebookId = jsonObject.getString("id")
-//                    Log.i("Facebook Id: ", facebookId.toString())
-//                    id = facebookId.toString()
-//                } else {
-//                    Log.i("Facebook Id: ", "Not exists")
-//                    id = "Not exists"
-//                }
-
-
-//                // Facebook First Name
-//                if (jsonObject.has("first_name")) {
-//                    val facebookFirstName = jsonObject.getString("first_name")
-//                    Log.i("Facebook First Name: ", facebookFirstName)
-//                    firstName = facebookFirstName
-//                } else {
-//                    Log.i("Facebook First Name: ", "Not exists")
-//                    firstName = "Not exists"
-//                }
-//
-//
-//                // Facebook Middle Name
-//                if (jsonObject.has("middle_name")) {
-//                    val facebookMiddleName = jsonObject.getString("middle_name")
-//                    Log.i("Facebook Middle Name: ", facebookMiddleName)
-//                    middleName = facebookMiddleName
-//                } else {
-//                    Log.i("Facebook Middle Name: ", "Not exists")
-//                    middleName = "Not exists"
-//                }
-//
-//
-//                // Facebook Last Name
-//                if (jsonObject.has("last_name")) {
-//                    val facebookLastName = jsonObject.getString("last_name")
-//                    Log.i("Facebook Last Name: ", facebookLastName)
-//                    lastName = facebookLastName
-//                } else {
-//                    Log.i("Facebook Last Name: ", "Not exists")
-//                    lastName = "Not exists"
-//                }
-
-
-                /***
-                 * get Facebook name
-                 */
-
-
                 /***
                  * get Facebook name
                  */
@@ -164,12 +114,6 @@ class LoginFragment : Fragment() {
                     Log.i("Facebook Name: ", "Not exists")
                     name = "Not exists"
                 }
-
-
-                /***
-                 * get Face book email
-                 */
-
 
                 /***
                  * get Face book email
@@ -187,6 +131,7 @@ class LoginFragment : Fragment() {
             }).executeAsync()
     }
 
+    //navigate to list fragment
     private fun navigateToHotelListFragment() {
         val newAction = LoginFragmentDirections.actionLoginFragmentToHotelListFragment(name, email)
         findNavController().navigate(newAction)

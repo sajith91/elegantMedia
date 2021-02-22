@@ -1,8 +1,7 @@
-package com.android.elegantmedia.feature.base
+package com.android.elegantmedia.feature.hotelList.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.android.elegantmedia.feature.hotelList.viewModel.HotelListViewModel
 import com.android.elegantmedia.networkclass.api.ApiHelper
 import com.android.elegantmedia.networkclass.repository.Hotelepository
 

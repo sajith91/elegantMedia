@@ -2,29 +2,24 @@ package com.android.elegantmedia.feature.hotelList.ui
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.elegantmedia.databinding.HotelListFragmentBinding
 
-import com.android.elegantmedia.feature.base.ViewModelFactory
+import com.android.elegantmedia.feature.hotelList.viewModel.ViewModelFactory
 import com.android.elegantmedia.feature.hotelList.models.Hotel
 
 import com.android.elegantmedia.feature.hotelList.viewModel.HotelListViewModel
-import com.android.elegantmedia.feature.login.LoginFragmentDirections
 import com.android.elegantmedia.networkclass.api.ApiHelper
 import com.android.elegantmedia.networkclass.api.RetrofitBuilder
 import com.android.elegantmedia.util.Status
 import com.android.elegantmedia.util.adapter.ItemClickListener
-import com.android.elegantmedia.util.adapter.MainAdapter
+import com.android.elegantmedia.util.adapter.HotelListAdapter
 import com.facebook.AccessToken
 import com.facebook.GraphRequest
 import com.facebook.HttpMethod
@@ -43,7 +38,9 @@ class HotelListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+            ViewModelFactory(
+                ApiHelper(RetrofitBuilder.apiService)
+            )
         ).get(HotelListViewModel::class.java)
     }
 
@@ -55,7 +52,7 @@ class HotelListFragment : Fragment() {
         binding.viewModel = viewModel
         viewModel.userName = args.name
         viewModel.userEmail = args.email
-        val adapter = MainAdapter(ItemClickListener { hotel ->
+        val adapter = HotelListAdapter(ItemClickListener { hotel ->
             navigateToDetailFragment(hotel)
         });
         val manager = LinearLayoutManager(requireContext())
@@ -65,6 +62,9 @@ class HotelListFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
+        /***
+         * observe for changes in hotel list
+         */
         viewModel.getHotels().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
                 when (resource.status) {
@@ -93,6 +93,9 @@ class HotelListFragment : Fragment() {
             }
         })
 
+        /**
+         * logout button click handler
+         */
         binding.logoutButton.setOnClickListener {
             if (AccessToken.getCurrentAccessToken() != null) {
                 GraphRequest(
@@ -108,6 +111,8 @@ class HotelListFragment : Fragment() {
 
         return binding.root
     }
+
+
 
     //navigate to detail fragment
     private fun navigateToDetailFragment(hotel: Hotel) {
